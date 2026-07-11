@@ -3,9 +3,9 @@ let mascotas = [];
 function obtenerDatosMascota() {
 
     let nombre = document.getElementById("nombre").value.trim();
-    let especie = document.getElementById("especie").value.trim();
-    let propietario = document.getElementById("propietario").value.trim();
-    let edad = Number(document.getElementById("edad").value);
+    let especie = document.getElementById("especieAnimal").value.trim();
+    let propietario = document.getElementById("nombreDueno").value.trim();
+    let edad = Number(document.getElementById("edadAnimal").value);
     return {
         nombre: nombre,
         especie: especie,
@@ -84,9 +84,9 @@ function mostrarMascota() {
 
 function registrarMascota() {
     const nombre = document.getElementById("nombre").value;
-    const especie = document.getElementById("especie").value;
-    const propietario = document.getElementById("propietario").value;
-    const edad = document.getElementById("edad").value;
+    const especie = document.getElementById("especieAnimal").value;
+    const propietario = document.getElementById("nombreDueno").value;
+    const edad = document.getElementById("edadAnimal").value;
 
     const resultado = validarFormulario(nombre, edad, estadoAnimal, nombreDueno, especie);
     if (resultado.esValido) {
@@ -117,4 +117,3 @@ function actualizarEstadisticas() {
     document.getElementById("pendientes").textContent = mascotas.filter(m => !m.atendido).length;
     document.getElementById("atendidas").textContent = mascotas.filter(m => m.atendido).length;
 }
-
