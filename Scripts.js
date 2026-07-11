@@ -7,17 +7,41 @@
 
 
 
+///Formas Logicas Utiles para mas tarde.
+///form.addEventListener("submit", (e) => {
+///    e.preventDefault();
+///});
+///const form = document.querySelector("form");
+///if (!form) {
+///    console.error("No se encontró el formulario");
+///    return;
+///}
+let mascotas = [];
 
-form.addEventListener("submit", (e) => {
-e.preventDefault();
-});
+function obtenerDatosMascota(evento) {
+    evento.preventDefault();
+
+    let nombre = document.getElementById("nombreAnimal").value.trim();
+    let edadAnimal = Number(document.getElementById("edadAnimal").value);
+    let estadoAnimal = document.getElementById("estadoAnimal").value;
+    let nombreDueno = document.getElementById("nombreDueno").value.trim();
+    let especieAnimal = document.getElementById("especieAnimal").value.trim();
+    return {
+        nombre: nombre,
+        edadAnimal: edadAnimal,
+        estadoAnimal: estadoAnimal,
+        nombreDueno: nombreDueno,
+        especieAnimal: especieAnimal,
+    };
 
 
-
-
-
-const form = document.querySelector("form");
-if (!form) {
-console.error("No se encontró el formulario");
-return;
 }
+
+function validarFormulario(nombre, edadAnimal, estadoAnimal, nombreDueno) {
+   if (nombre === "" || isNaN(edadAnimal) || estadoAnimal === "" || nombreDueno === "") {
+        return "Por favor, complete todos los campos correctamente.";
+    }
+    return "";
+}
+
+

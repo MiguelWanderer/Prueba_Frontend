@@ -13,14 +13,14 @@
     <form action="#" method="POST">
   
         <div>
-            <label for="nombre-animal">Nombre del animal:</label>
-            <input type="text" id="nombre-animal" name="nombre_animal" placeholder="Ej. Rocko" required>
+            <label for="nombreAnimal">Nombre del animal:</label>
+            <input type="text" id="nombreAnimal" name="nombre_animal" placeholder="Ej. Rocko" required>
         </div>
 
         <!-- Estado -->
         <div>
-            <label for="estado-animal">Estado de salud:</label>
-            <select id="estado-animal" name="estado_animal" required>
+            <label for="estadoAnimal">Estado de salud:</label>
+            <select id="estadoAnimal" name="estado_animal" required>
                 <option value="">Selecciona un estado</option>
                 <option value="saludable">Saludable / Control</option>
                 <option value="enfermo">Enfermo / En tratamiento</option>
@@ -31,15 +31,34 @@
 
         <!-- Edad -->
         <div>
-            <label for="edad-animal">Edad (en años o meses):</label>
-            <input type="text" id="edad-animal" name="edad_animal" placeholder="Ej. 3 años / 5 meses" required>
+            <label for="edadAnimal">Edad (en años o meses):</label>
+            <input type="number" id="edadAnimal" name="edad_animal" placeholder="Ej. 3 años / 5 meses" required>
         </div>
-
+        <!--Especie-->
+        <div>
+            <label for="especieAnimal">Especie:</label>
+            <input type="text" id="especieAnimal" name="especie_animal" placeholder="Ej. Perro, Gato" required>
+        </div>
         <!-- Dueño -->
         <div>
-            <label for="nombre-dueno">Nombre del dueño:</label>
-            <input type="text" id="nombre-dueno" name="nombre_dueno" placeholder="Ej. Juan Pérez" required>
+            <label for="nombreDueno">Nombre del dueño:</label>
+            <input type="text" id="nombreDueno" name="nombre_dueno" placeholder="Ej. Juan Pérez" required>
         </div>
+        <!--estado-animal-->
+        <div>
+            <label for="EstadoAtencion">Estado del animal:</label>
+            <input type="text" id="EstadoAtencion" name="estado_atencion" placeholder="Ej. Atendido,Pendiente" required>
+        </div>
+
+        <!-- Mostrar mascota-->
+        <div>
+            <label for="mostrarMascota">Mascota:</label>
+            <input type="text" id="mostrarMascota" name="mascota" placeholder="Ej. Rocko" required>
+        </div>
+        <!--Estadisticas-->
+        <div id="estadisticas"></div>
+        <!--Mensaje de error -->
+        <div id="mensaje-error"></div>
 
         <!-- Botón de Envío -->
         <br>
