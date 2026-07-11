@@ -1,15 +1,18 @@
 let mascotas = [];
 
 function validarFormulario(nombre, edadAnimal, nombreDueno, especieAnimal) {
-
+    
     if (nombre.length < 2 || edadAnimal <= 0 || nombreDueno.length < 2 || especieAnimal.length < 2) {
         return {
             esValido: false,
             mensaje: "Error: Asegúrate de que todos los campos tengan al menos 2 caracteres y la edad sea un número positivo."
         };
+    } else {
+        return { 
+            esValido: true, 
+            mensaje: "Formulario válido." 
+        };
     }
-
-    return { esValido: true, mensaje: "Formulario válido." };
 }
 
 function mostrarMascota() {
@@ -59,7 +62,7 @@ function registrarMascota() {
     const nombre = document.getElementById("nombre").value;
     const especieAnimal = document.getElementById("especieAnimal").value;
     const nombreDueno = document.getElementById("nombreDueno").value;
-    const edadAnimal = document.getElementById("edadAnimal").value;
+    const edadAnimal = document.getElementById("edadAnimal").value.trim();
 
     const resultado = validarFormulario(nombre, edadAnimal, nombreDueno, especieAnimal);
 
