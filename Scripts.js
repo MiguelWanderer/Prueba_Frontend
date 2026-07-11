@@ -12,13 +12,30 @@ function obtenerDatosMascota() {
         propietario: propietario,
         edad: edad,
         atendido: false,
-}
-}
-function validarFormulario(nombre, edadAnimal, estadoAnimal, nombreDueno, especieAnimal) {
-    if (!nombre || !edadAnimal || !estadoAnimal || !nombreDueno || !especieAnimal) {
+    };
+     if (!nombre || !edadAnimal || !estadoAnimal || !nombreDueno || !especieAnimal) {
         return("Por favor, complete todos los campos del formulario.");
     }
     return "Formulario válido.";
+}
+
+function validarFormulario(nombre, edadAnimal, estadoAnimal, nombreDueno, especieAnimal) {
+
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const edadAnimal = document.getElementById("edadAnimal").value.trim();
+    const estadoAnimal = document.getElementById("estadoAnimal").value.trim();
+    const nombreDueno = document.getElementById("nombreDueno").value.trim();
+    const especieAnimal = document.getElementById("especieAnimal").value.trim();
+
+    if (nombre.length < 2 || edadAnimal.length < 2 || estadoAnimal.length < 2 || nombreDueno.length < 2 || especieAnimal.length < 2) {
+        return { 
+            esValido: false, 
+            mensaje: "Error: Asegúrate de que todos los campos tengan al menos 2 caracteres y la edad sea un número positivo." 
+        };
+    }
+
+    return { esValido: true, mensaje: "Formulario válido." };
 }
 
 
@@ -71,8 +88,8 @@ function registrarMascota() {
     const propietario = document.getElementById("propietario").value;
     const edad = document.getElementById("edad").value;
 
-    const resultado = validarFormulario(nombre, especie, propietario, edad);
-    if (resultado === "Formulario válido.") {
+    const resultado = validarFormulario(nombre, edad, estadoAnimal, nombreDueno, especie);
+    if (resultado.esValido) {
         const nuevaMascota = {
             id: Date.now(),
             nombre: nombre.trim(),
