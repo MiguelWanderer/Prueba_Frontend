@@ -8,55 +8,49 @@
 </head>
 <body>
 
-    <h1>Registro de Paciente Veterinario</h1>
+    <h1>Registro de Atención Veterinaria</h1>
 
-    <form action="#" method="POST">
-  
+    <form id="formMascota">
         <div>
-            <label for="nombreAnimal">Nombre del animal:</label>
-            <input type="text" id="nombreAnimal" name="nombre_animal" placeholder="Ej. Rocko" required>
+            <label for="nombre">Nombre de la mascota:</label>
+            <input type="text" id="nombre" placeholder="Ej. Rocko" required>
         </div>
-
-        <!-- Estado de salud (pendiente decidir si se mantiene) -->
         <div>
-            <label for="estadoAnimal">Estado de salud:</label>
-            <select id="estadoAnimal" name="estado_animal" required>
-                <option value="">Selecciona un estado</option>
-                <option value="saludable">Saludable / Control</option>
-                <option value="enfermo">Enfermo / En tratamiento</option>
-                <option value="urgencia">Urgencia</option>
-                <option value="post-operatorio">Post-operatorio</option>
-            </select>
+            <label for="especie">Especie:</label>
+            <input type="text" id="especie" placeholder="Ej. Perro" required>
         </div>
-
-        <!-- Edad -->
         <div>
-            <label for="edadAnimal">Edad (en años o meses):</label>
-            <input type="number" id="edadAnimal" name="edad_animal" placeholder="Ej. 3 años / 5 meses" required>
+            <label for="propietario">Nombre del dueño:</label>
+            <input type="text" id="propietario" placeholder="Ej. Juan Pérez" required>
         </div>
-
-        <!-- Especie -->
         <div>
-            <label for="especieAnimal">Especie:</label>
-            <input type="text" id="especieAnimal" name="especie_animal" placeholder="Ej. Perro, Gato" required>
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" placeholder="Ej. 3" required>
         </div>
-
-        <!-- Dueño -->
-        <div>
-            <label for="nombreDueno">Nombre del dueño:</label>
-            <input type="text" id="nombreDueno" name="nombre_dueno" placeholder="Ej. Juan Pérez" required>
-        </div>
-        <!-- Botón de Envío -->
+        
         <br>
-        <button type="submit">Registrar Mascota</button>
+        <button type="button" onclick="registrarMascota()">Registrar Mascota</button>
     </form>
 
-    <!-- Fuera del form: acá va a pintar JS -->
-    <div id="lista-mascotas"></div>
-    <div id="estadisticas"></div>
-    <div id="mensaje-error"></div>
+    <div id="mensajeError" style="color: red; margin: 10px 0;"></div>
+    
+    <div id="estadisticas">
+        <h3>Estadísticas</h3>
+        <p>Total mascotas: <span id="total">0</span></p>
+        <p>Pendientes: <span id="pendientes">0</span></p>
+        <p>Atendidas: <span id="atendidas">0</span></p>
+    </div>
 
-    <script src="Scripts.js" defer></script>
+    <h3>Listado de Pacientes</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th><th>Especie</th><th>Propietario</th><th>Edad</th><th>Estado</th><th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="listaMascotas"></tbody>
+    </table>
+
+    <script src="Scripts.js"></script>
 </body>
 </html>
-
