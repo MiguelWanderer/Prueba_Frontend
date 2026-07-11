@@ -2,18 +2,16 @@ let mascotas = [];
 
 function obtenerDatosMascota() {
 
-    let nombre = document.getElementById("nombreAnimal").value.trim();
-    let edadAnimal = Number(document.getElementById("edadAnimal").value);
-    let estadoAnimal = document.getElementById("estadoAnimal").value;
-    let nombreDueno = document.getElementById("nombreDueno").value.trim();
-    let especieAnimal = document.getElementById("especieAnimal").value.trim();
+    let nombre = document.getElementById("nombre").value.trim();
+    let especie = document.getElementById("especie").value.trim();
+    let propietario = document.getElementById("propietario").value.trim();
+    let edad = Number(document.getElementById("edad").value);
     return {
         nombre: nombre,
-        edadAnimal: edadAnimal,
-        estadoAnimal: estadoAnimal,
-        nombreDueno: nombreDueno,
-        especieAnimal: especieAnimal,
-        EstadoAtencion: "Pendiente",
+        especie: especie,
+        propietario: propietario,
+        edad: edad,
+        atendido: false,
 }
 }
 function validarFormulario(nombre, edadAnimal, estadoAnimal, nombreDueno, especieAnimal) {
@@ -28,29 +26,42 @@ function mostrarMascota() {
     let lista = document.getElementById("listaMascotas");
     lista.innerHTML = "";
 
-    mascotas.forEach((mascota, index) => {
-        let item = document.createElement("li");
+    mascotas.forEach((mascota) => {
+        let fila = document.createElement("tr");
 
-        item.textContent = mascota.nombre + 
-            " | Edad: " + mascota.edadAnimal + 
-            " | Estado: " + mascota.estadoAnimal +
-            " | Dueño: " + mascota.nombreDueno +
-            " | Especie: " + mascota.especieAnimal + 
-            " | Estado de Atención: " + mascota.EstadoAtencion;
+        let celdaNombre = document.createElement("td");
+        celdaNombre.textContent = mascota.nombre;
 
-        let botonEliminar = document.createElement("button");
-        botonEliminar.textContent = "Eliminar";
+        let celdaEspecie = document.createElement("td");
+        celdaEspecie.textContent = mascota.especie;
 
+        let celdaPropietario = document.createElement("td");
+        celdaPropietario.textContent = mascota.propietario;
+
+        let celdaEdad = document.createElement("td");
+        celdaEdad.textContent = mascota.edad;
+
+        let celdaEstado = document.createElement("td");
+        celdaEstado.textContent = mascota.atendido ? "Atendido" : "Pendiente";
+
+        let celdaAccion = document.createElement("td");
         let botonAtender = document.createElement("button");
         botonAtender.textContent = "Atender";
 
         botonAtender.addEventListener("click", function() {
-            atenderMascota(index);
+            cambiarEstado(mascota.id);
         });
 
-        item.appendChild(botonAtender);
-        item.appendChild(botonEliminar);
-        lista.appendChild(item);
+        celdaAccion.appendChild(botonAtender);
+
+        fila.appendChild(celdaNombre);
+        fila.appendChild(celdaEspecie);
+        fila.appendChild(celdaPropietario);
+        fila.appendChild(celdaEdad);
+        fila.appendChild(celdaEstado);
+        fila.appendChild(celdaAccion);
+
+        lista.appendChild(fila);
     });
 }
 
@@ -71,7 +82,7 @@ function registrarMascota() {
             atendido: false
         };
         mascotas.push(nuevaMascota);
-        mostrarMascotas();
+        mostrarMascota();
         actualizarEstadisticas();
     }
 }
@@ -80,7 +91,7 @@ function cambiarEstado(id) {
     mascotas.forEach(m => {
         if (m.id === id) m.atendido = true;
     });
-    mostrarMascotas();
+    mostrarMascota();
     actualizarEstadisticas();
 }
 
@@ -89,5 +100,4 @@ function actualizarEstadisticas() {
     document.getElementById("pendientes").textContent = mascotas.filter(m => !m.atendido).length;
     document.getElementById("atendidas").textContent = mascotas.filter(m => m.atendido).length;
 }
-
 
